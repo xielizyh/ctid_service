@@ -23,9 +23,9 @@
    CREATE TABLE `ctid_order` (
      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
      `username` varchar(100) DEFAULT '' COMMENT '姓名',
-     `phone` int(11) unsigned DEFAULT '0' COMMENT '手机',
+     `phone` varchar(11) unsigned DEFAULT '0' COMMENT '手机',
      `cert_type` varchar(100) DEFAULT '身份证' COMMENT '证件类型',
-     `cert_number` int(18) unsigned DEFAULT '0' COMMENT '证件号码',
+     `cert_number` varchar(18) unsigned DEFAULT '0' COMMENT '证件号码',
      `room_number` int(4) unsigned DEFAULT '0' COMMENT '入住房号',
      `checkin_time` int(10) unsigned DEFAULT '0' COMMENT '入住时间',
      `checkout_time` int(10) unsigned DEFAULT '0' COMMENT '退房时间',
@@ -43,6 +43,24 @@
    
 
 # 总结
+
+## 数据库
+
+1. 更改数据库中某一字段的类型
+
+   ```mysql
+   ALTER TABLE ctid_order MODIFY phone VARCHAR(11);
+   ```
+
+2. 更改数据库中某一字段的名字
+
+   ```mysql
+   ALTER TABLE ctid_order CHANGE username user_name VARCHAR(100);
+   ```
+
+   
+
+## 注释
 
 1. swag安装后找不到？
 

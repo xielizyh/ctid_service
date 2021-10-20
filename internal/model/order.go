@@ -1,13 +1,17 @@
 package model
 
-import "github.com/jinzhu/gorm"
+import (
+	"fmt"
+
+	"github.com/jinzhu/gorm"
+)
 
 type Order struct {
 	*Model
-	UserName     string `json:"username"`
-	Phone        uint32 `json:"phone"`
+	UserName     string `json:"user_name"`
+	Phone        string `json:"phone"`
 	CertType     string `json:"cert_type"`
-	CertNumber   uint32 `json:"cert_number"`
+	CertNumber   string `json:"cert_number"`
 	RoomNumber   uint16 `json:"room_number"`
 	CheckinTime  uint32 `json:"checkin_time"`
 	CheckoutTime uint32 `json:"checkout_time"`
@@ -24,7 +28,7 @@ func (o Order) Count(db *gorm.DB) (int, error) {
 	var count int
 	if o.UserName != "" {
 		// 使用name过滤
-		db = db.Where("username = ?", o.UserName)
+		db = db.Where("user_name = ?", o.UserName)
 	}
 	// 使用state过滤
 	db = db.Where("state = ?", o.State)
@@ -45,7 +49,7 @@ func (o Order) List(db *gorm.DB, pageOffset, pageSize int) ([]*Order, error) {
 	}
 	if o.UserName != "" {
 		// 使用name过滤
-		db = db.Where("username = ?", o.UserName)
+		db = db.Where("user_name = ?", o.UserName)
 	}
 	// 使用state过滤
 	db = db.Where("state = ?", o.State)
@@ -58,6 +62,7 @@ func (o Order) List(db *gorm.DB, pageOffset, pageSize int) ([]*Order, error) {
 
 // Create 创建订单
 func (o Order) Create(db *gorm.DB) error {
+	fmt.Println(o)
 	return db.Create(&o).Error
 }
 

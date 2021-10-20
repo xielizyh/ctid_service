@@ -27,7 +27,7 @@ func (o Order) Get(c *gin.Context) {}
 // @Success 200 {object} model.Order "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
-// @Router /api/v1/Orders [get]
+// @Router /api/v1/orders [get]
 func (o Order) List(c *gin.Context) {
 	// 入参校验和参数绑定
 	param := service.OrderListRequest{}
@@ -45,7 +45,7 @@ func (o Order) List(c *gin.Context) {
 	// 正常回应
 	svc := service.New(c.Request.Context())
 	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
-	totalRows, err := svc.CountOrder(&service.CountOrderRequest{Name: param.Name, State: param.State})
+	totalRows, err := svc.CountOrder(&service.CountOrderRequest{UserName: param.UserName, State: param.State})
 	if err != nil {
 		global.Logger.Errorf("svc.CountOrder error: %v", err)
 		response.ToErrorResponse(errcode.ErrorCountOrderFail)
@@ -60,7 +60,6 @@ func (o Order) List(c *gin.Context) {
 	}
 
 	response.ToResponseList(Orders, totalRows)
-	return
 }
 
 // @Summary 新增订单
@@ -71,7 +70,7 @@ func (o Order) List(c *gin.Context) {
 // @Success 200 {object} model.Order "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
-// @Router /api/v1/Orders [post]
+// @Router /api/v1/orders [post]
 func (o Order) Create(c *gin.Context) {
 	// 入参校验和参数绑定
 	param := service.CreateOrderRequest{}
@@ -95,7 +94,6 @@ func (o Order) Create(c *gin.Context) {
 	}
 
 	response.ToResponse(gin.H{})
-	return
 }
 
 // @Summary 更新订单
@@ -107,7 +105,7 @@ func (o Order) Create(c *gin.Context) {
 // @Success 200 {array} model.Order "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
-// @Router /api/v1/Orders/{id} [put]
+// @Router /api/v1/orders/{id} [put]
 func (o Order) Update(c *gin.Context) {
 	// 入参校验和参数绑定
 	param := service.UpdateOrderRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
@@ -131,7 +129,6 @@ func (o Order) Update(c *gin.Context) {
 	}
 
 	response.ToResponse(gin.H{})
-	return
 }
 
 // @Summary 删除订单
@@ -140,7 +137,7 @@ func (o Order) Update(c *gin.Context) {
 // @Success 200 {string} string "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
-// @Router /api/v1/Orders/{id} [delete]
+// @Router /api/v1/orders/{id} [delete]
 func (o Order) Delete(c *gin.Context) {
 	// 入参校验和参数绑定
 	param := service.DeleteOrderRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
@@ -164,5 +161,4 @@ func (o Order) Delete(c *gin.Context) {
 	}
 
 	response.ToResponse(gin.H{})
-	return
 }

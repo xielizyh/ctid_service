@@ -30,9 +30,9 @@ func init() {
 	}
 }
 
-// @title 博客系统
+// @title CTID系统
 // @version 1.0
-// @description Go 语言编程之旅：一起用 Go 做项目
+// @description CTID智能门锁小程序后台系统
 // @termsOfService https://github.com/xielizyh/ctid_service
 func main() {
 	// 新建路由
