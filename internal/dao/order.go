@@ -5,8 +5,8 @@ import (
 	"github.com/xielizyh/ctid_service/pkg/app"
 )
 
-func (d *Dao) CountOrder(userName string, state uint8) (int, error) {
-	order := model.Order{UserName: userName, State: state}
+func (d *Dao) CountOrder(state uint8) (int, error) {
+	order := model.Order{State: state}
 	return order.Count(d.engine)
 }
 
@@ -21,7 +21,7 @@ func (d *Dao) GetOrderList(state uint8, page, pageSize int) ([]*model.Order, err
 	return order.List(d.engine, pageOffset, pageSize)
 }
 
-func (d *Dao) CreateOrder(userName, phone, certType, certNumber string, roomNumber uint16, checkinTime, checkoutTime uint32) error {
+func (d *Dao) CreateOrder(userName, phone, certType, certNumber string, roomNumber uint16, checkinTime, checkoutTime uint32, state uint8) error {
 	order := model.Order{
 		UserName:     userName,
 		Phone:        phone,
@@ -30,6 +30,7 @@ func (d *Dao) CreateOrder(userName, phone, certType, certNumber string, roomNumb
 		RoomNumber:   roomNumber,
 		CheckinTime:  checkinTime,
 		CheckoutTime: checkoutTime,
+		State:        state,
 		Model:        &model.Model{},
 	}
 

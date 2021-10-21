@@ -33,11 +33,9 @@ func NewRouter() *gin.Engine {
 		apiv1.DELETE("/orders/:id", order.Delete)
 		// 改
 		// apiv1.PUT("/orders/:id", order.Update)
-		// 改
-		// apiv1.PATCH("/orders/:id/state", order.Update)
 		// 查
 		apiv1.GET("/orders", order.List)
-		// 查
+		// 查(这个冒号:表示参数id)，示例：http://127.0.0.1:8000/api/v1/orders/8
 		apiv1.GET("/orders/:id", order.Get)
 	}
 

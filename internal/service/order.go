@@ -6,35 +6,16 @@ import (
 )
 
 type CountOrderRequest struct {
-	UserName string `form:"user_name" binding:"max=100"`
-	State    uint8  `form:"state,default=1" binding:"oneof=0 1"`
+	State uint8 `form:"state,default=1" binding:"oneof=0 1"`
 }
 
 type GetOrderRequest struct {
 	ID uint32 `form:"id" binding:"required,gte=1"`
-	// ID uint32 `json:"id" binding:"required,gte=1"`
 }
-
-// type OrderListRequest struct {
-// 	UserName string `form:"user_name" binding:"max=100"`
-// 	State    uint8  `form:"state,default=1" binding:"oneof=0 1"`
-// }
 
 type OrderListRequest struct {
 	State uint8 `json:"state" binding:"oneof=0 1"`
 }
-
-// type CreateOrderRequest struct {
-// 	UserName     string `form:"user_name" binding:"required,min=2,max=100"`
-// 	Phone        uint64 `form:"phone" binding:"required"`
-// 	CertType     string `form:"cert_type" binding:"required"`
-// 	CertNumber   uint64 `form:"cert_number" binding:"required"`
-// 	RoomNumber   uint16 `form:"room_number" binding:"required"`
-// 	CheckinTime  uint32 `form:"checkin_time" binding:"required"`
-// 	CheckoutTime uint32 `form:"checkout_time" binding:"required"`
-// 	CreatedBy    string `form:"created_by" binding:"required,min=2,max=100"`
-// 	State        uint8  `form:"state,default=1" binding:"oneof=0 1"`
-// }
 
 type CreateOrderRequest struct {
 	UserName     string `json:"userName" binding:"required,min=2,max=100"`
@@ -45,7 +26,7 @@ type CreateOrderRequest struct {
 	CheckinTime  uint32 `json:"checkinTime" binding:"required"`
 	CheckoutTime uint32 `json:"checkoutTime" binding:"required"`
 	CreatedBy    string `json:"createdBy" binding:"min=0,max=100"`
-	State        uint8  `json:"state" binding:"oneof=0 1"`
+	State        uint8  `form:"state,default=1" binding:"oneof=0 1"`
 }
 
 type UpdateOrderRequest struct {
@@ -60,7 +41,7 @@ type DeleteOrderRequest struct {
 }
 
 func (svc *Service) CountOrder(param *CountOrderRequest) (int, error) {
-	return svc.dao.CountOrder(param.UserName, param.State)
+	return svc.dao.CountOrder(param.State)
 }
 
 func (svc *Service) GetOrder(param *GetOrderRequest) ([]*model.Order, error) {
@@ -80,6 +61,7 @@ func (svc *Service) CreateOrder(param *CreateOrderRequest) error {
 		param.RoomNumber,
 		param.CheckinTime,
 		param.CheckoutTime,
+		param.State,
 	)
 }
 
