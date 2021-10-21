@@ -39,6 +39,17 @@ func (o Order) Count(db *gorm.DB) (int, error) {
 	return count, nil
 }
 
+// Get 查询订单
+func (o Order) Get(db *gorm.DB) ([]*Order, error) {
+	var orders []*Order
+	var err error
+	// 查找可使用标签的所有记录
+	if err = db.Where("id = ? AND is_del = ?", o.Model.ID, 0).Find(&orders).Error; err != nil {
+		return nil, err
+	}
+	return orders, nil
+}
+
 // List 查询订单列表
 func (o Order) List(db *gorm.DB, pageOffset, pageSize int) ([]*Order, error) {
 	var orders []*Order

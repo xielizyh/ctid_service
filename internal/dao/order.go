@@ -10,17 +10,27 @@ func (d *Dao) CountOrder(userName string, state uint8) (int, error) {
 	return order.Count(d.engine)
 }
 
-func (d *Dao) GetOrderList(userName string, state uint8, page, pageSize int) ([]*model.Order, error) {
-	order := model.Order{UserName: userName, State: state}
+func (d *Dao) GetOrder(id uint32) ([]*model.Order, error) {
+	order := model.Order{Model: &model.Model{ID: id}}
+	return order.Get(d.engine)
+}
+
+func (d *Dao) GetOrderList(state uint8, page, pageSize int) ([]*model.Order, error) {
+	order := model.Order{State: state}
 	pageOffset := app.GetPageOffset(page, pageSize)
 	return order.List(d.engine, pageOffset, pageSize)
 }
 
-func (d *Dao) CreateOrder(userName string, state uint8, createdBy string) error {
+func (d *Dao) CreateOrder(userName, phone, certType, certNumber string, roomNumber uint16, checkinTime, checkoutTime uint32) error {
 	order := model.Order{
-		UserName: userName,
-		State:    state,
-		Model:    &model.Model{CreatedBy: createdBy},
+		UserName:     userName,
+		Phone:        phone,
+		CertType:     certType,
+		CertNumber:   certNumber,
+		RoomNumber:   roomNumber,
+		CheckinTime:  checkinTime,
+		CheckoutTime: checkoutTime,
+		Model:        &model.Model{},
 	}
 
 	return order.Create(d.engine)

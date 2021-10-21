@@ -32,13 +32,13 @@ func NewRouter() *gin.Engine {
 		// 删
 		apiv1.DELETE("/orders/:id", order.Delete)
 		// 改
-		apiv1.PUT("/orders/:id", order.Update)
+		// apiv1.PUT("/orders/:id", order.Update)
 		// 改
-		apiv1.PATCH("/orders/:id/state", order.Update)
+		// apiv1.PATCH("/orders/:id/state", order.Update)
 		// 查
 		apiv1.GET("/orders", order.List)
 		// 查
-		apiv1.GET("/orders/:id", order.List)
+		apiv1.GET("/orders/:id", order.Get)
 	}
 
 	return r

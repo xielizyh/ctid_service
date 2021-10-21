@@ -1,6 +1,9 @@
 package v1
 
 import (
+	"fmt"
+	"log"
+
 	"github.com/gin-gonic/gin"
 	"github.com/xielizyh/ctid_service/global"
 	"github.com/xielizyh/ctid_service/internal/service"
@@ -16,7 +19,32 @@ func NewOrder() Order {
 	return Order{}
 }
 
-func (o Order) Get(c *gin.Context) {}
+func (o Order) Get(c *gin.Context) {
+	log.Println("exec GET request")
+	// 入参校验和参数绑定
+	param := service.GetOrderRequest{}
+	// 创建响应
+	response := app.NewResponse(c)
+	// 校验
+	valid, errs := app.BindAndValid(c, &param)
+	fmt.Println(param.ID)
+	if !valid {
+		global.Logger.Errorf("app.BindAndValid error: %v", errs)
+		// 回应错误
+		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
+	}
+	// 正常回应
+	svc := service.New(c.Request.Context())
+	Orders, err := svc.GetOrder(&param)
+	if err != nil {
+		global.Logger.Errorf("svc.GetOrder error: %v", err)
+		response.ToErrorResponse(errcode.ErrorGetOrderListFail)
+		return
+	}
+
+	response.ToResponse(Orders)
+}
 
 // @Summary 获取多个订单
 // @Produce  json
@@ -29,6 +57,7 @@ func (o Order) Get(c *gin.Context) {}
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/orders [get]
 func (o Order) List(c *gin.Context) {
+	log.Println("exec LIST request")
 	// 入参校验和参数绑定
 	param := service.OrderListRequest{}
 	// 创建响应
@@ -45,7 +74,7 @@ func (o Order) List(c *gin.Context) {
 	// 正常回应
 	svc := service.New(c.Request.Context())
 	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
-	totalRows, err := svc.CountOrder(&service.CountOrderRequest{UserName: param.UserName, State: param.State})
+	totalRows, err := svc.CountOrder(&service.CountOrderRequest{State: param.State})
 	if err != nil {
 		global.Logger.Errorf("svc.CountOrder error: %v", err)
 		response.ToErrorResponse(errcode.ErrorCountOrderFail)
