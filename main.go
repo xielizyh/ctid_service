@@ -124,7 +124,5 @@ func setupLogger() error {
 		LocalTime: true,
 	}, "", log.LstdFlags).WithCaller(2)
 
-	// 测试日志存储
-	global.Logger.Infof("%s: blog-service/%s", "xieli", "test logger")
 	return nil
 }
