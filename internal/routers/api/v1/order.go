@@ -116,10 +116,26 @@ func (o Order) Create(c *gin.Context) {
 	}
 	// 正常回应
 	svc := service.New(c.Request.Context())
+	// 去重
+	checkParam := service.CheckOrderRequest{
+		UserName:   param.UserName,
+		CertNumber: param.CertNumber,
+		Phone:      param.Phone}
+	if totalRows, err := svc.CheckOrder(&checkParam); err != nil {
+		global.Logger.Errorf("svc.CheckOrder error: %v", err)
+		response.ToErrorResponse(errcode.ErrorCheckOrderFail)
+		return
+	} else {
+		if totalRows != 0 {
+			response.ToErrorResponse(errcode.ErrorAlreadyExistOrderFail)
+			return
+		}
+	}
+
 	err := svc.CreateOrder(&param)
 	if err != nil {
 		global.Logger.Errorf("svc.CreateOrder error: %v", err)
-		response.ToErrorResponse(errcode.ErrorCountOrderFail)
+		response.ToErrorResponse(errcode.ErrorCreateOrderFail)
 		return
 	}
 
