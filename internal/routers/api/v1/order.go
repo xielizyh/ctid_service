@@ -32,7 +32,7 @@ func (o Order) Get(c *gin.Context) {
 	// 创建响应
 	response := app.NewResponse(c)
 	// 校验
-	valid, errs := app.BindAndValid(c, &param)
+	valid, errs := app.BindAndValid(c, &param, "")
 	if !valid {
 		global.Logger.Errorf("app.BindAndValid error: %v", errs)
 		// 回应错误
@@ -66,14 +66,13 @@ func (o Order) List(c *gin.Context) {
 	// 创建响应
 	response := app.NewResponse(c)
 	// 校验
-	valid, errs := app.BindAndValid(c, &param)
+	valid, errs := app.BindAndValid(c, &param, "")
 	if !valid {
 		global.Logger.Errorf("app.BindAndValid error: %v", errs)
 		// 回应错误
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
 		return
 	}
-
 	// 正常回应
 	svc := service.New(c.Request.Context())
 	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
@@ -108,7 +107,7 @@ func (o Order) Create(c *gin.Context) {
 	// 创建响应
 	response := app.NewResponse(c)
 	// 校验
-	valid, errs := app.BindAndValid(c, &param)
+	valid, errs := app.BindAndValid(c, &param, "")
 	if !valid {
 		global.Logger.Errorf("app.BindAndValid error: %v", errs)
 		// 回应错误
@@ -140,7 +139,7 @@ func (o Order) Delete(c *gin.Context) {
 	// 创建响应
 	response := app.NewResponse(c)
 	// 校验
-	valid, errs := app.BindAndValid(c, &param)
+	valid, errs := app.BindAndValid(c, &param, "")
 	if !valid {
 		global.Logger.Errorf("app.BindAndValid error: %v", errs)
 		// 回应错误
@@ -157,4 +156,40 @@ func (o Order) Delete(c *gin.Context) {
 	}
 
 	response.ToResponse(gin.H{})
+}
+
+// @Summary 校验订单
+// @Produce  json
+// @Param page query int false "页码"
+// @Param page_size query int false "每页数量"
+// @Success 200 {object} model.Order "成功"
+// @Failure 400 {object} errcode.Error "请求错误"
+// @Failure 500 {object} errcode.Error "内部错误"
+// @Router /api/v1/orders [get]
+func (o Order) Check(c *gin.Context) {
+	// 入参校验和参数绑定
+	param := service.CheckOrderRequest{}
+	// 创建响应
+	response := app.NewResponse(c)
+	// 校验
+	valid, errs := app.BindAndValid(c, &param, "json")
+	if !valid {
+		global.Logger.Errorf("app.BindAndValid error: %v", errs)
+		// 回应错误
+		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
+	}
+	// 正常回应
+	svc := service.New(c.Request.Context())
+	totalRows, err := svc.CheckOrder(&param)
+	if err != nil {
+		global.Logger.Errorf("svc.CheckOrder error: %v", err)
+		response.ToErrorResponse(errcode.ErrorCheckOrderFail)
+		return
+	}
+	if totalRows > 0 {
+		response.ToResponse(gin.H{})
+	} else {
+		response.ToErrorResponse(errcode.ErrorCheckOrderFail)
+	}
 }

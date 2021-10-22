@@ -16,7 +16,9 @@ func (d *Dao) GetOrder(id uint32) ([]*model.Order, error) {
 }
 
 func (d *Dao) GetOrderList(state uint8, page, pageSize int) ([]*model.Order, error) {
-	order := model.Order{State: state}
+	order := model.Order{
+		State: state,
+	}
 	pageOffset := app.GetPageOffset(page, pageSize)
 	return order.List(d.engine, pageOffset, pageSize)
 }
@@ -54,4 +56,14 @@ func (d *Dao) UpdateOrder(id uint32, userName string, state uint8, modifiedBy st
 func (d *Dao) DeleteOrder(id uint32) error {
 	order := model.Order{Model: &model.Model{ID: id}}
 	return order.Delete(d.engine)
+}
+
+func (d *Dao) CheckOrder(userName string, certNumber string, phone string) (int, error) {
+	order := model.Order{
+		UserName:   userName,
+		CertNumber: certNumber,
+		Phone:      phone,
+		Model:      &model.Model{},
+	}
+	return order.Check(d.engine)
 }

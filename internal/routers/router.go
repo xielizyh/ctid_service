@@ -37,6 +37,8 @@ func NewRouter() *gin.Engine {
 		apiv1.GET("/orders", order.List)
 		// 查(这个冒号:表示参数id)，示例：http://127.0.0.1:8000/api/v1/orders/8
 		apiv1.GET("/orders/:id", order.Get)
+		// 订单校验
+		apiv1.POST("/orders/check", order.Check)
 	}
 
 	return r

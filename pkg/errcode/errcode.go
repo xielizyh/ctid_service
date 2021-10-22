@@ -6,9 +6,9 @@ import (
 )
 
 type Error struct {
-	code    int      `json:"code"`
-	msg     string   `json:"msg"`
-	details []string `json:"details"`
+	code    int
+	msg     string
+	details []string
 }
 
 // 全局错误码字典作为存储载体

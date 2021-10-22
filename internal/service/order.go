@@ -41,6 +41,12 @@ type DeleteOrderRequest struct {
 	ID uint32 `json:"id" binding:"required,gte=1"`
 }
 
+type CheckOrderRequest struct {
+	UserName   string `json:"user_name" binding:"required,min=2,max=100"`
+	Phone      string `json:"phone" binding:"required"`
+	CertNumber string `json:"cert_number" binding:"required"`
+}
+
 func (svc *Service) CountOrder(param *CountOrderRequest) (int, error) {
 	return svc.dao.CountOrder(param.State)
 }
@@ -72,4 +78,12 @@ func (svc *Service) UpdateOrder(param *UpdateOrderRequest) error {
 
 func (svc *Service) DeleteOrder(param *DeleteOrderRequest) error {
 	return svc.dao.DeleteOrder(param.ID)
+}
+
+func (svc *Service) CheckOrder(param *CheckOrderRequest) (int, error) {
+	return svc.dao.CheckOrder(
+		param.UserName,
+		param.CertNumber,
+		param.Phone,
+	)
 }

@@ -24,10 +24,6 @@ func (o Order) TableName() string {
 // Count 查找订单数量
 func (o Order) Count(db *gorm.DB) (int, error) {
 	var count int
-	if o.UserName != "" {
-		// 使用name过滤
-		db = db.Where("user_name = ?", o.UserName)
-	}
 	// 使用state过滤
 	db = db.Where("state = ?", o.State)
 	// 统计可使用的订单
@@ -56,6 +52,19 @@ func (o Order) List(db *gorm.DB, pageOffset, pageSize int) ([]*Order, error) {
 		// 偏移并限制检索的记录数
 		db = db.Offset(pageOffset).Limit(pageSize)
 	}
+	// fmt.Println("order.list", o.UserName, o.CertNumber, o.Phone)
+	if o.UserName != "" {
+		// 使用name过滤
+		db = db.Where("user_name = ?", o.UserName)
+	}
+	if o.CertNumber != "" {
+		// 使用name过滤
+		db = db.Where("cert_number = ?", o.CertNumber)
+	}
+	if o.Phone != "" {
+		// 使用name过滤
+		db = db.Where("phone = ?", o.Phone)
+	}
 	// 查找可使用标签的所有记录
 	if err = db.Where("is_del = ?", 0).Find(&orders).Error; err != nil {
 		return nil, err
@@ -80,4 +89,27 @@ func (o Order) Update(db *gorm.DB, values interface{}) error {
 // Delete 删除订单
 func (o Order) Delete(db *gorm.DB) error {
 	return db.Where("id = ? AND is_del = ?", o.Model.ID, 0).Delete(&o).Error
+}
+
+// Check 校验订单
+func (o Order) Check(db *gorm.DB) (int, error) {
+	var count int
+	if o.UserName != "" {
+		// 使用name过滤
+		db = db.Where("user_name = ?", o.UserName)
+	}
+	if o.CertNumber != "" {
+		// 使用name过滤
+		db = db.Where("cert_number = ?", o.CertNumber)
+	}
+	if o.Phone != "" {
+		// 使用name过滤
+		db = db.Where("phone = ?", o.Phone)
+	}
+	// fmt.Println("order.Check", o.UserName, o.CertNumber, o.Phone)
+	// 统计可使用的订单
+	if err := db.Model(&o).Where("is_del = ?", 0).Count(&count).Error; err != nil {
+		return 0, err
+	}
+	return count, nil
 }

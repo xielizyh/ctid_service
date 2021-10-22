@@ -33,9 +33,15 @@ func (v ValidErrors) Errors() []string {
 }
 
 // BindAndValid 绑定和校验参数
-func BindAndValid(c *gin.Context, v interface{}) (bool, ValidErrors) {
+func BindAndValid(c *gin.Context, v interface{}, contentType string) (bool, ValidErrors) {
 	var errs ValidErrors
-	err := c.ShouldBind(v)
+	var err error
+	switch contentType {
+	case "json":
+		err = c.ShouldBindJSON(v)
+	default:
+		err = c.ShouldBind(v)
+	}
 	if err != nil {
 		v := c.Value("trans")
 		trans, _ := v.(ut.Translator)

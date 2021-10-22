@@ -6,4 +6,5 @@ var (
 	ErrorUpdateOrderFail  = NewError(20010003, "更新订单失败")
 	ErrorDeleteOrderFail  = NewError(20010004, "删除订单失败")
 	ErrorCountOrderFail   = NewError(20010005, "统计订单失败")
+	ErrorCheckOrderFail   = NewError(20010006, "校验订单失败")
 )
