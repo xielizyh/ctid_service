@@ -1,6 +1,10 @@
 package convert
 
-import "strconv"
+import (
+	"strconv"
+	"strings"
+	"unicode"
+)
 
 type StrTo string
 
@@ -26,4 +30,15 @@ func (s StrTo) UInt32() (uint32, error) {
 func (s StrTo) MustUInt32() uint32 {
 	v, _ := s.UInt32()
 	return v
+}
+
+func (s StrTo) UnderscoreToUpperCamelCase() string {
+	v := strings.Replace(s.String(), "_", " ", -1)
+	v = strings.Title(v)
+	return strings.Replace(v, " ", "", -1)
+}
+
+func (s StrTo) UnderscoreToLowerCamelCase() string {
+	v := s.UnderscoreToUpperCamelCase()
+	return string(unicode.ToLower(rune(v[0]))) + v[1:]
 }

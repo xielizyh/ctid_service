@@ -10,34 +10,35 @@ type CountOrderRequest struct {
 }
 
 type GetOrderRequest struct {
-	ID uint32 `form:"id" binding:"required,gte=1"`
+	ID    uint32 `form:"id" binding:"required,gte=1"`
+	State uint8  `form:"state,default=1" binding:"oneof=0 1"`
 }
 
 type OrderListRequest struct {
-	State uint8 `json:"state" binding:"oneof=0 1"`
+	State uint8 `form:"state" binding:"oneof=0 1"`
 }
 
 type CreateOrderRequest struct {
-	UserName     string `json:"userName" binding:"required,min=2,max=100"`
+	UserName     string `json:"user_name" binding:"required,min=2,max=100"`
 	Phone        string `json:"phone" binding:"required"`
-	CertType     string `json:"certType" binding:"required"`
-	CertNumber   string `json:"certNumber" binding:"required"`
-	RoomNumber   uint16 `json:"roomNumber" binding:"required"`
-	CheckinTime  uint32 `json:"checkinTime" binding:"required"`
-	CheckoutTime uint32 `json:"checkoutTime" binding:"required"`
-	CreatedBy    string `json:"createdBy" binding:"min=0,max=100"`
-	State        uint8  `form:"state,default=1" binding:"oneof=0 1"`
+	CertType     string `json:"cert_type" binding:"required"`
+	CertNumber   string `json:"cert_number" binding:"required"`
+	RoomNumber   uint16 `json:"room_number" binding:"required"`
+	CheckinTime  uint32 `json:"checkin_time" binding:"required"`
+	CheckoutTime uint32 `json:"checkout_time" binding:"required"`
+	CreatedBy    string `json:"created_by" binding:"min=0,max=100"`
+	State        uint8  `json:"state" binding:"oneof=0 1"`
 }
 
 type UpdateOrderRequest struct {
-	ID         uint32 `form:"id" binding:"required,gte=1"`
-	UserName   string `form:"user_name" binding:"min=2,max=100"`
-	State      uint8  `form:"state" binding:"oneof=0 1"`
-	ModifiedBy string `form:"modified_by" binding:"required,min=2,max=100"`
+	ID         uint32 `json:"id" binding:"required,gte=1"`
+	UserName   string `json:"user_name" binding:"min=2,max=100"`
+	State      uint8  `json:"state" binding:"oneof=0 1"`
+	ModifiedBy string `json:"modified_by" binding:"required,min=2,max=100"`
 }
 
 type DeleteOrderRequest struct {
-	ID uint32 `form:"id" binding:"required,gte=1"`
+	ID uint32 `json:"id" binding:"required,gte=1"`
 }
 
 func (svc *Service) CountOrder(param *CountOrderRequest) (int, error) {

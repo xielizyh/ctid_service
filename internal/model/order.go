@@ -1,8 +1,6 @@
 package model
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -58,12 +56,6 @@ func (o Order) List(db *gorm.DB, pageOffset, pageSize int) ([]*Order, error) {
 		// 偏移并限制检索的记录数
 		db = db.Offset(pageOffset).Limit(pageSize)
 	}
-	if o.UserName != "" {
-		// 使用name过滤
-		db = db.Where("user_name = ?", o.UserName)
-	}
-	// 使用state过滤
-	db = db.Where("state = ?", o.State)
 	// 查找可使用标签的所有记录
 	if err = db.Where("is_del = ?", 0).Find(&orders).Error; err != nil {
 		return nil, err
@@ -73,7 +65,6 @@ func (o Order) List(db *gorm.DB, pageOffset, pageSize int) ([]*Order, error) {
 
 // Create 创建订单
 func (o Order) Create(db *gorm.DB) error {
-	fmt.Println(o)
 	return db.Create(&o).Error
 }
 

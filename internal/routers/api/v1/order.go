@@ -1,9 +1,6 @@
 package v1
 
 import (
-	"fmt"
-	"log"
-
 	"github.com/gin-gonic/gin"
 	"github.com/xielizyh/ctid_service/global"
 	"github.com/xielizyh/ctid_service/internal/service"
@@ -22,19 +19,20 @@ func NewOrder() Order {
 // @Summary 获取订单
 // @Produce  json
 // @Param id path int true "订单 ID"
+// @Param state body int false "状态" Enums(0, 1) default(1)
 // @Success 200 {object} model.Order "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/orders [get]
 func (o Order) Get(c *gin.Context) {
-	log.Println("exec GET request")
 	// 入参校验和参数绑定
-	param := service.GetOrderRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
+	param := service.GetOrderRequest{
+		ID: convert.StrTo(c.Param("id")).MustUInt32(),
+	}
 	// 创建响应
 	response := app.NewResponse(c)
 	// 校验
 	valid, errs := app.BindAndValid(c, &param)
-	fmt.Println(param.ID)
 	if !valid {
 		global.Logger.Errorf("app.BindAndValid error: %v", errs)
 		// 回应错误
@@ -55,7 +53,7 @@ func (o Order) Get(c *gin.Context) {
 
 // @Summary 获取多个订单
 // @Produce  json
-// @Param state query int false "状态" Enums(0, 1) default(1)
+// @Param state body int false "状态" Enums(0, 1) default(1)
 // @Param page query int false "页码"
 // @Param page_size query int false "每页数量"
 // @Success 200 {object} model.Order "成功"
@@ -63,7 +61,6 @@ func (o Order) Get(c *gin.Context) {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/orders [get]
 func (o Order) List(c *gin.Context) {
-	log.Println("exec LIST request")
 	// 入参校验和参数绑定
 	param := service.OrderListRequest{}
 	// 创建响应
@@ -93,20 +90,21 @@ func (o Order) List(c *gin.Context) {
 		response.ToErrorResponse(errcode.ErrorGetOrderListFail)
 		return
 	}
-
 	response.ToResponseList(Orders, totalRows)
 }
 
 // @Summary 新增订单
 // @Produce  json
-// @Param state body int false "状态" Enums(0, 1) default(1)
 // @Success 200 {object} model.Order "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/orders [post]
 func (o Order) Create(c *gin.Context) {
 	// 入参校验和参数绑定
-	param := service.CreateOrderRequest{}
+	param := service.CreateOrderRequest{
+		// 默认创建可用订单
+		State: 1,
+	}
 	// 创建响应
 	response := app.NewResponse(c)
 	// 校验
