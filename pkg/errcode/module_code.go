@@ -8,4 +8,6 @@ var (
 	ErrorCountOrderFail        = NewError(20010005, "统计订单失败")
 	ErrorCheckOrderFail        = NewError(20010006, "校验订单失败")
 	ErrorAlreadyExistOrderFail = NewError(20010007, "订单已经存在")
+
+	ErrorPortraitAuthFail = NewError(20020001, "人像认证失败")
 )

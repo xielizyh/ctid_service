@@ -176,8 +176,6 @@ func (o Order) Delete(c *gin.Context) {
 
 // @Summary 校验订单
 // @Produce  json
-// @Param page query int false "页码"
-// @Param page_size query int false "每页数量"
 // @Success 200 {object} model.Order "成功"
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"

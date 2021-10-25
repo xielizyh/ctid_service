@@ -1,0 +1,28 @@
+2021/10/25 11:12:35 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635131555554179500}
+2021/10/25 11:13:14 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: Photo为必填字段","time":1635131594825624000}
+2021/10/25 11:17:15 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.CheckOrder error: exit status 2","time":1635131835209857000}
+2021/10/25 14:12:00 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.CheckOrder error: exit status 1","time":1635142320082677000}
+2021/10/25 14:12:46 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.CheckOrder error: exit status 1","time":1635142366679874600}
+2021/10/25 14:12:47 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.CheckOrder error: exit status 1","time":1635142367841758300}
+2021/10/25 14:17:07 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.CheckOrder error: exit status 1","time":1635142627789035100}
+2021/10/25 14:24:51 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635143091064351700}
+2021/10/25 14:27:10 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635143230174100500}
+2021/10/25 14:34:01 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635143641039338300}
+2021/10/25 14:36:49 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635143809618300800}
+2021/10/25 14:37:34 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635143854421607600}
+2021/10/25 14:40:05 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635144005234278100}
+2021/10/25 14:40:42 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635144042796364800}
+2021/10/25 14:44:33 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635144273600934200}
+2021/10/25 14:47:30 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635144450833393300}
+2021/10/25 17:24:44 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段","time":1635153884361456400}
+2021/10/25 17:25:19 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段","time":1635153919088055800}
+2021/10/25 17:25:52 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段","time":1635153952109005500}
+2021/10/25 17:27:10 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段","time":1635154030924264200}
+2021/10/25 17:28:39 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段","time":1635154119652542700}
+2021/10/25 17:31:39 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段","time":1635154299703100000}
+2021/10/25 17:33:02 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName为必填字段,Photo为必填字段","time":1635154382070634100}
+2021/10/25 17:35:46 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: fork/exec C:\\windows\\system32\\cmd.exe: The filename or extension is too long.","time":1635154546022481000}
+2021/10/25 17:37:46 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: fork/exec C:\\windows\\system32\\cmd.exe: The filename or extension is too long.","time":1635154666104763400}
+2021/10/25 17:40:03 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: exit status 1","time":1635154803205686900}
+2021/10/25 17:45:44 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName长度必须至少为2个字符","time":1635155144636236100}
+2021/10/25 17:46:03 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: UserName长度必须至少为2个字符","time":1635155163924975400}

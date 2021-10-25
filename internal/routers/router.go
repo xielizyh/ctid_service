@@ -23,6 +23,7 @@ func NewRouter() *gin.Engine {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	order := v1.NewOrder()
+	portrait := v1.NewPortrait()
 	// 创建api/v1路由组
 	apiv1 := r.Group("/api/v1")
 	// 注册Handler到对应的路由规则
@@ -39,6 +40,8 @@ func NewRouter() *gin.Engine {
 		apiv1.GET("/orders/:id", order.Get)
 		// 订单校验
 		apiv1.POST("/orders/check", order.Check)
+
+		apiv1.POST("/portrait/auth", portrait.Auth)
 	}
 
 	return r
