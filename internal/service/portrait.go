@@ -23,6 +23,7 @@ func PortraitAuth(param *PortraitAuthRequest) (string, error) {
 	// cmd := exec.Command("cmd", "/C", "java -jar -h")
 	var err error
 	authCmd := app.GetAuthCmd()
+	// param.Photo 参数太长，不能执行. The filename or extension is too long.
 	cmd := exec.Command("cmd", "/C", authCmd, param.UserName, param.CertNumber, param.Photo)
 	log.Printf("The auth cmd is %v\n", cmd)
 	output, err := cmd.CombinedOutput()
