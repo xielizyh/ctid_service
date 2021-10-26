@@ -9,8 +9,7 @@ App:
   LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
-  AuthCmdPath: third_party/AuthenticationClientDemo2_0_jar
-  AuthCmdName: "AuthenticationClientDemo2.0.jar"
+  AuthServerAddr: 127.0.0.1:38380 
 Database: 
   DBType: mysql
   Username: ctid
