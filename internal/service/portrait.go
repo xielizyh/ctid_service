@@ -1,11 +1,14 @@
 package service
 
 import (
+	"bytes"
+	"errors"
 	"log"
 	"net"
 	"time"
 
 	"github.com/xielizyh/ctid_service/pkg/app"
+	"golang.org/x/text/encoding/simplifiedchinese"
 )
 
 type PortraitAuthRequest struct {
@@ -45,23 +48,36 @@ func PortraitAuth(param *PortraitAuthRequest) (string, error) {
 	}
 	defer conn.Close()
 	// 写身份信息
-	info := param.UserName + " " + param.CertNumber + " " + param.Photo + "\n"
-	log.Println(info)
-	_, err = conn.Write([]byte(info))
+	var info bytes.Buffer
+	// info.WriteString(param.UserName)
+	userName, _ := simplifiedchinese.GBK.NewEncoder().String(param.UserName)
+	info.WriteString(userName)
+	info.WriteString(" ")
+	info.WriteString(param.CertNumber)
+	info.WriteString(" ")
+	info.WriteString(param.Photo)
+	info.WriteString("\n")
+	// info := param.UserName + " " + param.CertNumber + " " + param.Photo + "\n"
+	log.Println(info.String())
+	_, err = conn.Write(info.Bytes())
 	if err != nil {
 		return "", err
 	}
 
-	// 读认证结果
+	// 读认证结果: 长度+认证结果码
 	var result string
-	recvBuf := make([]byte, 512)
+	recvBuf := make([]byte, 6)
 	conn.SetReadDeadline(time.Now().Add(10 * time.Second))
 	recvLen, err := conn.Read(recvBuf)
 	if err != nil {
 		return "", err
 	}
 
-	result = string(recvBuf[:recvLen])
+	if recvLen == 6 {
+		result = string(recvBuf[2:])
+	} else {
+		return "", errors.New("auth server return result length error")
+	}
 	// log.Println(result)
 
 	return result, nil

@@ -43,7 +43,7 @@ func (p Portrait) Auth(c *gin.Context) {
 		response.ToErrorResponse(errcode.ErrorPortraitAuthFail)
 		return
 	}
-	log.Println("认证结果: ", code)
+	log.Println("认证结果:", code)
 
 	result := ""
 	switch code {
