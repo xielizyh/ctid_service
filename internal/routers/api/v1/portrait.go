@@ -45,13 +45,10 @@ func (p Portrait) Auth(c *gin.Context) {
 	}
 	log.Println("认证结果:", code)
 
-	result := ""
 	switch code {
 	case "00XX":
-		result = "success"
+		response.ToResponse(gin.H{})
 	default:
-		result = "failure"
+		response.ToErrorResponse(errcode.ErrorPortraitAuthFail)
 	}
-
-	response.ToResponseAuth(result, code)
 }

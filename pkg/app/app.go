@@ -56,9 +56,9 @@ func (r *Response) ToErrorResponse(err *errcode.Error) {
 	r.Ctx.JSON(err.StatusCode(), response)
 }
 
-func (r *Response) ToResponseAuth(result, code string) {
-	r.Ctx.JSON(http.StatusOK, gin.H{
-		"auth_result": result,
-		"code":        code,
-	})
-}
+// func (r *Response) ToResponseAuth(result, code string) {
+// 	r.Ctx.JSON(http.StatusOK, gin.H{
+// 		"auth_result": result,
+// 		"code":        code,
+// 	})
+// }
