@@ -42,9 +42,12 @@ type DeleteOrderRequest struct {
 }
 
 type CheckOrderRequest struct {
-	UserName   string `json:"user_name" binding:"required,min=2,max=100"`
-	Phone      string `json:"phone" binding:"required"`
-	CertNumber string `json:"cert_number" binding:"required"`
+	UserName     string `json:"user_name" binding:"required,min=2,max=100"`
+	Phone        string `json:"phone" binding:"required"`
+	CertNumber   string `json:"cert_number" binding:"required"`
+	RoomNumber   uint16 `json:"room_number" binding:"required"`
+	CheckinTime  uint32 `json:"checkin_time" binding:"required"`
+	CheckoutTime uint32 `json:"checkout_time" binding:"required"`
 }
 
 func (svc *Service) CountOrder(param *CountOrderRequest) (int, error) {
@@ -85,5 +88,8 @@ func (svc *Service) CheckOrder(param *CheckOrderRequest) (int, error) {
 		param.UserName,
 		param.CertNumber,
 		param.Phone,
+		param.RoomNumber,
+		param.CheckinTime,
+		param.CheckoutTime,
 	)
 }

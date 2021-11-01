@@ -99,6 +99,10 @@ func (o Order) List(c *gin.Context) {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/orders [post]
 func (o Order) Create(c *gin.Context) {
+	// 注意读取了后已无数据，再入场校验和参数绑定会出错
+	// buf := make([]byte, 1024)
+	// n, _ := c.Request.Body.Read(buf)
+	// log.Println(string(buf[0:n]))
 	// 入参校验和参数绑定
 	param := service.CreateOrderRequest{
 		// 默认创建可用订单
@@ -118,9 +122,13 @@ func (o Order) Create(c *gin.Context) {
 	svc := service.New(c.Request.Context())
 	// 去重
 	checkParam := service.CheckOrderRequest{
-		UserName:   param.UserName,
-		CertNumber: param.CertNumber,
-		Phone:      param.Phone}
+		UserName:     param.UserName,
+		CertNumber:   param.CertNumber,
+		Phone:        param.Phone,
+		RoomNumber:   param.RoomNumber,
+		CheckinTime:  param.CheckinTime,
+		CheckoutTime: param.CheckoutTime,
+	}
 	if totalRows, err := svc.CheckOrder(&checkParam); err != nil {
 		global.Logger.Errorf("svc.CheckOrder error: %v", err)
 		response.ToErrorResponse(errcode.ErrorCheckOrderFail)

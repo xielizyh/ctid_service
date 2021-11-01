@@ -58,12 +58,15 @@ func (d *Dao) DeleteOrder(id uint32) error {
 	return order.Delete(d.engine)
 }
 
-func (d *Dao) CheckOrder(userName string, certNumber string, phone string) (int, error) {
+func (d *Dao) CheckOrder(userName string, certNumber string, phone string, roomNumber uint16, checkinTime, checkoutTime uint32) (int, error) {
 	order := model.Order{
-		UserName:   userName,
-		CertNumber: certNumber,
-		Phone:      phone,
-		Model:      &model.Model{},
+		UserName:     userName,
+		CertNumber:   certNumber,
+		Phone:        phone,
+		RoomNumber:   roomNumber,
+		CheckinTime:  checkinTime,
+		CheckoutTime: checkoutTime,
+		Model:        &model.Model{},
 	}
 	return order.Check(d.engine)
 }

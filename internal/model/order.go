@@ -95,16 +95,28 @@ func (o Order) Delete(db *gorm.DB) error {
 func (o Order) Check(db *gorm.DB) (int, error) {
 	var count int
 	if o.UserName != "" {
-		// 使用name过滤
+		// 使用user_name过滤
 		db = db.Where("user_name = ?", o.UserName)
 	}
 	if o.CertNumber != "" {
-		// 使用name过滤
+		// 使用cert_number过滤
 		db = db.Where("cert_number = ?", o.CertNumber)
 	}
 	if o.Phone != "" {
-		// 使用name过滤
+		// 使用phone过滤
 		db = db.Where("phone = ?", o.Phone)
+	}
+	if o.RoomNumber != 0 {
+		// 使用RoomNumber过滤
+		db = db.Where("room_number = ?", o.RoomNumber)
+	}
+	if o.CheckinTime != 0 {
+		// 使用RoomNumber过滤
+		db = db.Where("checkin_time = ?", o.CheckinTime)
+	}
+	if o.CheckoutTime != 0 {
+		// 使用RoomNumber过滤
+		db = db.Where("checkout_time = ?", o.CheckoutTime)
 	}
 	// fmt.Println("order.Check", o.UserName, o.CertNumber, o.Phone)
 	// 统计可使用的订单

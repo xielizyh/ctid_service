@@ -39,3 +39,46 @@
 2021/10/26 16:37:16 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: read tcp 127.0.0.1:50311-\u003e127.0.0.1:38380: i/o timeout","time":1635237436229521000}
 2021/10/26 16:46:17 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: read tcp 127.0.0.1:52800-\u003e127.0.0.1:38380: i/o timeout","time":1635237977103694400}
 2021/10/26 16:46:26 {"callers":["G:/15---BLE/Project/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"svc.PortraitAuth error: read tcp 127.0.0.1:52821-\u003e127.0.0.1:38380: i/o timeout","time":1635237986481905200}
+2021/10/29 16:11:41 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635495101339649900}
+2021/10/29 16:11:55 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635495115841444800}
+2021/10/29 16:27:14 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496034298828700}
+2021/10/29 16:27:52 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496072562608900}
+2021/10/29 16:29:24 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496164798900300}
+2021/10/29 16:38:23 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496703809462600}
+2021/10/29 16:38:58 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496738811494700}
+2021/10/29 16:39:23 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496763056383700}
+2021/10/29 16:39:57 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496797633985400}
+2021/10/29 16:41:17 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496877440414800}
+2021/10/29 16:41:18 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496878119750700}
+2021/10/29 16:42:17 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496937908436200}
+2021/10/29 16:42:45 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635496965136921700}
+2021/10/29 16:46:14 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497174857974200}
+2021/10/29 16:47:20 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497240801842800}
+2021/10/29 16:47:44 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497264047252500}
+2021/10/29 16:48:23 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497303451571100}
+2021/10/29 16:53:49 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497629309525800}
+2021/10/29 16:53:52 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497632363506300}
+2021/10/29 16:54:01 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497641851396200}
+2021/10/29 16:54:29 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635497669116021100}
+2021/10/29 17:01:06 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498066942334800}
+2021/10/29 17:01:48 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498108228975600}
+2021/10/29 17:02:16 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498136431717600}
+2021/10/29 17:02:17 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498137369159900}
+2021/10/29 17:02:18 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498138128740000}
+2021/10/29 17:02:41 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498161660831300}
+2021/10/29 17:03:15 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498195550333600}
+2021/10/29 17:03:16 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498196335273400}
+2021/10/29 17:03:16 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498196642183400}
+2021/10/29 17:07:14 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498434967116900}
+2021/10/29 17:07:15 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498435887043400}
+2021/10/29 17:07:16 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498436562864600}
+2021/10/29 17:08:14 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498494839314800}
+2021/10/29 17:08:16 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498496326247000}
+2021/10/29 17:08:16 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498496983870700}
+2021/10/29 17:08:17 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498497505458100}
+2021/10/29 17:08:19 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498499126275600}
+2021/10/29 17:11:55 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498715500503300}
+2021/10/29 17:12:02 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498722245182300}
+2021/10/29 17:13:54 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498834659444700}
+2021/10/29 17:15:11 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635498911178263700}
+2021/10/29 17:26:14 {"callers":["G:/15---BLE/Project/后台/ctid_serivce/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid error: ","time":1635499574600625900}
