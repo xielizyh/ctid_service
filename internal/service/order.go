@@ -46,8 +46,8 @@ type CheckOrderRequest struct {
 	Phone        string `json:"phone" binding:"required"`
 	CertNumber   string `json:"cert_number" binding:"required"`
 	RoomNumber   uint16 `json:"room_number" binding:"required"`
-	CheckinTime  uint32 `json:"checkin_time" binding:"required"`
-	CheckoutTime uint32 `json:"checkout_time" binding:"required"`
+	CheckinTime  uint32 `json:"checkin_time" binding:""`
+	CheckoutTime uint32 `json:"checkout_time" binding:""`
 }
 
 func (svc *Service) CountOrder(param *CountOrderRequest) (int, error) {
